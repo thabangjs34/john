@@ -30,10 +30,18 @@ function loadTasks() {
         if (isCompleted) {
             taskElement.innerHTML = `<p>${task.description} - Completed!</p>`;
         } else {
-            taskElement.innerHTML = `
-                <p>${task.description}</p>
-                <button onclick="completeTask('${task.id}', '${task.url}', ${task.points})">Complete Task</button>
-            `;
+            if (task.id === 'task3') {
+                // Special case for the referral task
+                taskElement.innerHTML = `
+                    <p>${task.description}</p>
+                    <button onclick="shareReferralLink('${task.url}')">Share Referral Link</button>
+                `;
+            } else {
+                taskElement.innerHTML = `
+                    <p>${task.description}</p>
+                    <button onclick="completeTask('${task.id}', '${task.url}', ${task.points})">Complete Task</button>
+                `;
+            }
         }
         
         // Add new tasks to the top of the task list if not completed
@@ -57,6 +65,15 @@ function completeTask(taskId, url, points) {
         // Reload tasks to reflect the completed task
         loadTasks();
     }, 1000);
+}
+
+// Function to share referral link and copy to clipboard
+function shareReferralLink(referralLink) {
+    navigator.clipboard.writeText(referralLink).then(() => {
+        alert("Referral link copied! 🎉\nShare it with your friends: " + referralLink);
+    }).catch(err => {
+        console.error('Could not copy text: ', err);
+    });
 }
 
 // Optional: Function to add new tasks dynamically
