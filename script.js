@@ -4,7 +4,7 @@ const tasks = [
     { id: 'task1', description: 'Subscribe to YouTube Channel', url: 'https://www.youtube.com/@thabangjs', points: 10 },
     { id: 'task2', description: 'Watch our latest video', url: 'https://www.youtube.com/shorts/cdgQlqiWEP4', points: 5 },
     { id: 'task3', description: 'Refer a friend', url: 'https://t.me/mflx_bot', points: 15 },
-    { id: 'task4', description: 'Join Our Community', url: 'https://t.me/metaflix24', points: 250 }
+    { id: 'task4', description: 'Join Our Community', url: 'https://t.me/metaflix24', points: 0 }
 ];
 
 // Display total points on load
