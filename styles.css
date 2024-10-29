@@ -129,3 +129,33 @@ footer {
     from { transform: translateY(-20px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
+
+/* Airdrop Section Styling */
+.airdrop {
+    width: 100%;
+    max-width: 500px;
+    padding: 15px;
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: slideIn 1s ease;
+}
+
+.airdrop h2 {
+    text-align: center;
+    color: #f0f8ff;
+    margin-bottom: 10px;
+}
+
+.airdrop ul {
+    list-style: none;
+    padding: 0;
+    color: #f0f8ff;
+}
+
+.airdrop li {
+    padding: 5px;
+    border-bottom: 1px solid rgba(240, 248, 255, 0.2);
+    margin-bottom: 5px;
+}
