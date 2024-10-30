@@ -1,10 +1,10 @@
 // Initialize total points and retrieve task completion status from localStorage
 let totalPoints = parseInt(localStorage.getItem('totalPoints')) || 0;
 const tasks = [
-    { id: 'task1', description: 'Subscribe to YouTube Channel', url: 'https://www.youtube.com/@metaflix24', points: 10 },
-    { id: 'task2', description: 'Watch our latest video', url: 'https://youtu.be/KrAzMfO_TCQ', points: 5 },
-    { id: 'task3', description: 'Refer a friend', url: 'https://t.me/mflx_bot', points: 15, isReferral: true }, // Referral task
-    { id: 'task4', description: 'Join Our Community', url: 'https://t.me/metaflix24', points: 0 }
+    { id: 'task11', description: 'Subscribe to YouTube Channel', url: 'https://www.youtube.com/@metaflix24', points: 10 },
+    { id: 'task12', description: 'Watch our latest video', url: 'https://youtu.be/KrAzMfO_TCQ', points: 5 },
+    { id: 'task13', description: 'Refer a friend', url: 'https://t.me/mflx_bot', points: 1, isReferral: true }, // Referral task
+    { id: 'task14', description: 'Join Our Community', url: 'https://t.me/metaflix24', points: 0 }
 ];
 
 // Display total points on load
