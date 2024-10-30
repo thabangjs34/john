@@ -16,6 +16,10 @@ document.addEventListener("DOMContentLoaded", () => {
         tile.addEventListener("dragstart", handleDragStart);
         tile.addEventListener("dragover", handleDragOver);
         tile.addEventListener("drop", handleDrop);
+
+        tile.addEventListener("touchstart", handleTouchStart);
+        tile.addEventListener("touchmove", handleTouchMove);
+        tile.addEventListener("touchend", handleTouchEnd);
     });
 
     document.getElementById("submit-button").addEventListener("click", checkPuzzle);
@@ -23,6 +27,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 let draggedTile = null;
+let touchTile = null;
+let touchStartX = 0;
+let touchStartY = 0;
 
 function handleDragStart(event) {
     draggedTile = event.target;
@@ -38,6 +45,29 @@ function handleDrop(event) {
         const temp = draggedTile.textContent;
         draggedTile.textContent = event.target.textContent;
         event.target.textContent = temp;
+    }
+}
+
+function handleTouchStart(event) {
+    touchTile = event.target;
+    touchStartX = event.touches[0].clientX;
+    touchStartY = event.touches[0].clientY;
+}
+
+function handleTouchMove(event) {
+    event.preventDefault();
+}
+
+function handleTouchEnd(event) {
+    const touchEndX = event.changedTouches[0].clientX;
+    const touchEndY = event.changedTouches[0].clientY;
+
+    const targetTile = document.elementFromPoint(touchEndX, touchEndY);
+
+    if (targetTile && targetTile.classList.contains("tile") && touchTile !== targetTile) {
+        const temp = touchTile.textContent;
+        touchTile.textContent = targetTile.textContent;
+        targetTile.textContent = temp;
     }
 }
 
