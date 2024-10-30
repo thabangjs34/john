@@ -1,13 +1,5 @@
-const wordsWithHints = [
-    { word: ["M", "E", "T", "A", "F", "L", "I", "X"], hint: "Streaming Service" },
-    { word: ["S", "E", "R", "I", "E", "S"], hint: "Multiple Episodes" },
-    { word: ["A", "C", "T", "O", "R"], hint: "Performer" },
-    { word: ["D", "I", "R", "E", "C", "T", "O", "R"], hint: "Film Maker" },
-    { word: ["C", "I", "N", "E", "M", "A"], hint: "Movie Theater" }
-];
-
-let currentWord = getCurrentWord();
-let shuffledOrder = shuffleArray([...currentWord.word]);
+const correctOrder = ["M", "E", "T", "A", "F", "L", "I", "X"];
+let shuffledOrder = shuffleArray([...correctOrder]);
 
 document.addEventListener("DOMContentLoaded", () => {
     const tilesContainer = document.getElementById("tilesContainer");
@@ -24,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
         tile.addEventListener("dragstart", handleDragStart);
         tile.addEventListener("dragover", handleDragOver);
         tile.addEventListener("drop", handleDrop);
-        tile.addEventListener("dragend", handleDragEnd);
 
         tile.addEventListener("touchstart", handleTouchStart);
         tile.addEventListener("touchmove", handleTouchMove);
@@ -32,7 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.getElementById("submit-button").addEventListener("click", checkPuzzle);
-    document.getElementById("hint").textContent = `Hint: ${currentWord.hint}`;
     updateTimer();
 });
 
@@ -43,7 +33,6 @@ let touchStartY = 0;
 
 function handleDragStart(event) {
     draggedTile = event.target;
-    draggedTile.classList.add("dragging");
 }
 
 function handleDragOver(event) {
@@ -56,13 +45,6 @@ function handleDrop(event) {
         const temp = draggedTile.textContent;
         draggedTile.textContent = event.target.textContent;
         event.target.textContent = temp;
-    }
-}
-
-function handleDragEnd(event) {
-    if (draggedTile) {
-        draggedTile.classList.remove("dragging");
-        draggedTile = null;
     }
 }
 
@@ -99,13 +81,13 @@ function shuffleArray(array) {
 
 function checkPuzzle() {
     const currentOrder = Array.from(document.querySelectorAll(".tile")).map(tile => tile.textContent);
-    if (currentOrder.join("") === currentWord.word.join("")) {
-        document.getElementById("result-message").textContent = "You've earned 250 $MFLX";
+    if (currentOrder.join("") === correctOrder.join("")) {
+        document.getElementById("result-message").textContent = "Correct! You've earned 250 points!";
         updatePoints(250);
         localStorage.setItem("puzzleLastCompleted", Date.now());
         document.getElementById("submit-button").disabled = true;
     } else {
-        document.getElementById("result-message").textContent = "Dummy! Try again.";
+        document.getElementById("result-message").textContent = "Incorrect! Try again.";
     }
 }
 
@@ -130,56 +112,8 @@ function updateTimer() {
                 document.getElementById("timerFill").style.width = `${(newElapsed / (8 * 60 * 60 * 1000)) * 100}%`;
                 if (newElapsed >= 8 * 60 * 60 * 1000) {
                     document.getElementById("submit-button").disabled = false;
-                    updateCurrentWord();
                 }
             }, 1000);
         }
-    } else {
-        updateCurrentWord();
     }
-}
-
-function getCurrentWord() {
-    const lastWordIndex = parseInt(localStorage.getItem("lastWordIndex"));
-    const lastUpdatedTime = parseInt(localStorage.getItem("lastUpdatedTime"));
-    const now = Date.now();
-
-    if (!lastUpdatedTime || now - lastUpdatedTime >= 8 * 60 * 60 * 1000) {
-        return updateCurrentWord();
-    } else {
-        return wordsWithHints[lastWordIndex];
-    }
-}
-
-function updateCurrentWord() {
-    const newWordIndex = Math.floor(Math.random() * wordsWithHints.length);
-    const newWord = wordsWithHints[newWordIndex];
-
-    localStorage.setItem("lastWordIndex", newWordIndex);
-    localStorage.setItem("lastUpdatedTime", Date.now());
-    shuffledOrder = shuffleArray([...newWord.word]);
-
-    const tilesContainer = document.getElementById("tilesContainer");
-    tilesContainer.innerHTML = "";
-
-    shuffledOrder.forEach(letter => {
-        const tile = document.createElement("div");
-        tile.className = "tile";
-        tile.draggable = true;
-        tile.textContent = letter;
-        tile.setAttribute("data-letter", letter);
-        tilesContainer.appendChild(tile);
-
-        tile.addEventListener("dragstart", handleDragStart);
-        tile.addEventListener("dragover", handleDragOver);
-        tile.addEventListener("drop", handleDrop);
-        tile.addEventListener("dragend", handleDragEnd);
-
-        tile.addEventListener("touchstart", handleTouchStart);
-        tile.addEventListener("touchmove", handleTouchMove);
-        tile.addEventListener("touchend", handleTouchEnd);
-    });
-
-    document.getElementById("hint").textContent = `Hint: ${newWord.hint}`;
-    return newWord;
 }
