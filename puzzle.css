@@ -15,20 +15,20 @@ body {
 .puzzle-container {
     text-align: center;
     color: #fff;
-    padding: 20px;
-    border-radius: 10px;
+    padding: 2px;
+    border-radius: 2px;
     background-color: #2d2d2d;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
 }
 
 h1 {
-    font-size: 2.2rem;
+    font-size: 1.2rem;
     color: #ff3b3f;
     margin-bottom: 0.5em;
 }
 
 p {
-    font-size: 1rem;
+    font-size: 0.8rem;
     color: #ff3b3f;
     margin-bottom: 1em;
 }
@@ -36,8 +36,8 @@ p {
 .tiles-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    margin: 20px 0;
+    gap: 5px;
+    margin: 2px 0;
 }
 
 .tile {
@@ -118,4 +118,49 @@ p {
     to {
         width: 100%;
     }
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.back-button {
+    position: absolute; /* Allows positioning relative to the nearest positioned ancestor */
+    top: 10px; /* Adjust vertical position */
+    left: 10px; /* Adjust horizontal position */
+    z-index: 100; /* Ensures the button is above other elements */
+    background-color: #007BFF; /* Optional: Set the button background color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    padding: 10px 15px; /* Padding for the button */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Cursor change on hover */
+}
+
+.puzzle-container {
+    text-align: center;
+    padding: 1px;
+}
+
+.tiles-container {
+    margin: 1px 0; /* Space above and below the tiles container */
+}
+
+/* Optional styles for the timer bar */
+.timer-bar {
+    width: 100%;
+    background-color: #e0e0e0;
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.timer-fill {
+    height: 100%;
+    background-color: #28a745; /* Success color */
+    width: 0; /* Start with empty width */
+    transition: width 1s linear; /* Smooth transition */
 }
