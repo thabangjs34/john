@@ -100,12 +100,12 @@ function shuffleArray(array) {
 function checkPuzzle() {
     const currentOrder = Array.from(document.querySelectorAll(".tile")).map(tile => tile.textContent);
     if (currentOrder.join("") === currentWord.word.join("")) {
-        document.getElementById("result-message").textContent = "Correct! You've earned 250 points!";
+        document.getElementById("result-message").textContent = "You've earned 250 $MFLX";
         updatePoints(250);
         localStorage.setItem("puzzleLastCompleted", Date.now());
         document.getElementById("submit-button").disabled = true;
     } else {
-        document.getElementById("result-message").textContent = "Incorrect! Try again.";
+        document.getElementById("result-message").textContent = "Dummy! Try again.";
     }
 }
 
