@@ -1,3 +1,4 @@
+
 * {
     box-sizing: border-box;
 }
@@ -9,7 +10,7 @@ body {
     height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
-    background: radial-gradient(circle, #2b2b2b, #1b1b1b);
+    background: radial-gradient(circle, #d13232, #d13232, #600f0f);
 }
 
 .puzzle-container {
@@ -17,7 +18,7 @@ body {
     color: #fff;
     padding: 2px;
     border-radius: 2px;
-    background-color: #2d2d2d;
+    background-color: #faf7f9;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
 }
 
@@ -294,3 +295,27 @@ body {
     width: 0;
     transition: width 1s linear;
 }
+
+/* Add this CSS to your puzzle.css file */
+
+/* TON Logo Image */
+.ton-icon {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.ton-icon img {
+    width: 60px; /* Adjust the size as needed */
+    height: auto;
+ animation: float 3s ease-in-out infinite, glow 3s ease-in-out infinite;
+
+    
+}
+
+
+.ton-icon img:hover {
+    transform: rotateY(360deg); /* Rotate 360 degrees on hover */
+}
+
+
