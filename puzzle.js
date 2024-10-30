@@ -1,4 +1,4 @@
-const correctOrder = ["M", "E", "T", "A", "F", "L", "I", "X"];
+const correctOrder = ["S", "E", "R", "I", "E", "S"];
 let shuffledOrder = shuffleArray([...correctOrder]);
 
 document.addEventListener("DOMContentLoaded", () => {
