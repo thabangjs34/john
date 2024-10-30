@@ -3,7 +3,7 @@ let totalPoints = parseInt(localStorage.getItem('totalPoints')) || 0;
 const tasks = [
     { id: 'task1', description: 'Subscribe to YouTube Channel', url: 'https://www.youtube.com/@metaflix24', points: 10 },
     { id: 'task2', description: 'Watch our latest video', url: 'https://youtu.be/KrAzMfO_TCQ', points: 5 },
-    { id: 'task3', description: 'Refer a friend', url: 'https://t.me/mflx_bot', points: 15 },
+    { id: 'task3', description: 'Refer a friend', url: 'https://t.me/mflx_bot', points: 1 },
     { id: 'task4', description: 'Join Our Community', url: 'https://t.me/metaflix24', points: 0 }
 ];
 
@@ -18,9 +18,10 @@ function loadTasks() {
     const taskList = document.getElementById('taskList');
     taskList.innerHTML = '<h2>Available Tasks</h2>'; // Reset task list
 
-    tasks.forEach(task => {
-        // Check if task is completed in localStorage
-        const isCompleted = localStorage.getItem(task.id) === 'completed';
+     tasks.forEach(task => {
+        // Check if task is completed in localStorage (skip for referral task)
+        const isCompleted = localStorage.getItem(task.id) === 'completed' && !task.isReferral;
+         
 
         // Create task element
         const taskElement = document.createElement('div');
