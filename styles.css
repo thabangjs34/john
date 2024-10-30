@@ -31,7 +31,7 @@ header h1 {
 }
 
 header p {
-    font-size: 1.2em;
+    font-size: 1em;
     color: #f0f8ff;
     margin-top: 5px;
     animation: pulse 1.5s ease infinite;
@@ -160,7 +160,6 @@ footer {
     margin-bottom: 5px;
 }
 
-
 #puzzle-access {
     display: flex;
     align-items: center;
@@ -258,4 +257,3 @@ body {
     transform: scale(1.05); /* Slightly enlarge */
     box-shadow: 0 6px 30px rgba(255, 61, 61, 0.8); /* Increased shadow */
 }
-
