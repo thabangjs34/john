@@ -140,13 +140,13 @@ input {
 }
 
 button {
-    width: 100%;
+    width: 35%;
     padding: 10px;
     border: none;
     border-radius: 5px;
     background-color: #1b9cfc;
     color: #fff;
-    font-size: 1em;
+    font-size: 0.5em;
     cursor: pointer;
 }
 
